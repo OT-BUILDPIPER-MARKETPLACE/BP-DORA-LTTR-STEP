@@ -36,4 +36,4 @@ function createReleaseTag() {
     fi
 }
 
-createReleaseTag "design"
+createReleaseTag "createReleaseTag"
