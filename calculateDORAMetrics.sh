@@ -57,8 +57,8 @@ function getReleaseCommits() {
 
     releaseTag="${releaseName}#release"
     previousReleaseTag="${previousReleaseName}#release"
-    git log ${previousReleaseTag} ${releaseTag} --pretty=%H
-
+    git log ${previousReleaseTag} ${releaseTag} --pretty=%H > ${releaseName}.commits
+    cat ${releaseName}.commits
 }
 #createReleaseTag "createDeploymentTag"
 #createDeploymentTag "createDeploymentTag"
