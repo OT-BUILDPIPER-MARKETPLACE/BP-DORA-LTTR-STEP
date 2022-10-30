@@ -21,3 +21,5 @@ getReleaseCommits(release name, previous release name)
 ```
 getCommitLTTR(commit id, release name)
 ```
+* Get LTTR of all the commits of a release | This taks will get the LTTR for all the commits of a release
+getReleaseCommitsLTTR(release name, previous release name)
