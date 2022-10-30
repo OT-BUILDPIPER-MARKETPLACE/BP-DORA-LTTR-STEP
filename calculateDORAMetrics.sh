@@ -84,8 +84,8 @@ function getReleaseCommits() {
     logInfoMessage "Listing out commits done between ${previousReleaseName} and ${releaseName} release"
     logInfoMessage "Or you can say commits of ${releaseName}"
 
-    releaseTag="${releaseName}#release"
-    previousReleaseTag="${previousReleaseName}#release"
+    releaseTag=`getReleaseReleaseTagName ${releaseName}`
+    previousReleaseTag=`getReleaseReleaseTagName ${previousReleaseName}`
     git log ${previousReleaseTag} ${releaseTag} --pretty=%H > ${releaseName}.commits
     cat ${releaseName}.commits
 }
@@ -107,7 +107,7 @@ function getCommitLTTR() {
 }
 
 setConstants
-createReleaseTag "getCommitLTTR"
+#createReleaseTag "getCommitLTTR"
 #createDeploymentTag "getReleaseCommits"
-#getReleaseCommits createDeploymentTag createReleaseTag
+getReleaseCommits createDeploymentTag createReleaseTag
 #getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
