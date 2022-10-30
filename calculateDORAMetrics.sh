@@ -55,6 +55,10 @@ function getReleaseCommits() {
     logInfoMessage "Listing out commits done between ${previousReleaseName} and ${releaseName} release"
     logInfoMessage "Or you can say commits of ${releaseName}"
 
+    releaseTag="${releaseName}#release"
+    previousReleaseTag="${previousReleaseName}#release"
+    git log ${previousReleaseTag} ${releaseTag}
+
 }
 #createReleaseTag "createDeploymentTag"
 #createDeploymentTag "createDeploymentTag"
