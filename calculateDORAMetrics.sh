@@ -60,6 +60,15 @@ function getReleaseCommits() {
     git log ${previousReleaseTag} ${releaseTag} --pretty=%H > ${releaseName}.commits
     cat ${releaseName}.commits
 }
+
+function getCommitLTTR() {
+    commitId=$1
+    releaseName=$2
+    logInfoMessage "I'll get the LTTR for provided commit id ${commitId} in release ${releaseName}"
+}
+
 #createReleaseTag "getReleaseCommits"
 #createDeploymentTag "createDeploymentTag"
 #getReleaseCommits createDeploymentTag createReleaseTag
+
+getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
