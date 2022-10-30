@@ -44,7 +44,7 @@ function createReleaseTag() {
 
 function createDeploymentTag() {
     releaseName=$1
-    deploymentTag="$releaseName#deployed"
+    deploymentTag=`getReleaseDeploymentTagName ${releaseName}`
     tagExists=`tagExists ${deploymentTag}`
     if [ $tagExists -eq 1 ]; then
         logInfoMessage "Creating deployment tag ${deploymentTag} for ${releaseName} release"
@@ -76,6 +76,6 @@ function getCommitLTTR() {
 }
 
 #createReleaseTag "getReleaseCommits"
-#createDeploymentTag "createDeploymentTag"
+createDeploymentTag "getReleaseCommits"
 #getReleaseCommits createDeploymentTag createReleaseTag
-getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
+#getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
