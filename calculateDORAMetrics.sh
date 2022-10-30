@@ -6,6 +6,11 @@ function logInfoMessage() {
     echo -e "[$CURRENT_DATE] "$COLOR_START$GREEN[INFO]$COLOR_END" $MESSAGE"
 }
 
+function getCommitTime() {
+    commitId=$1
+    git log ${commitId} -n 1 --pretty=%ct
+}
+
 function logErrorMessage() {
     MESSAGE="$1"
     CURRENT_DATE=`date "+%D: %T"`
