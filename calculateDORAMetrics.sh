@@ -83,6 +83,10 @@ function getCommitLTTR() {
     logInfoMessage "Deployment tag of release is ${releaseDeploymentTag}"
     commitCreationTime=`getCommitTime ${commitId}`
     logInfoMessage "$commitId creation timestamp is ${commitCreationTime}"
+    releaseDeploymentTime=`getCommitTime ${releaseDeploymentTag}`
+    logInfoMessage "${releaseName} deployment timestamp is ${commitCreationTime}"
+    commitLTTRInSec=`expr ${releaseDeploymentTime} - ${commitCreationTime}`
+    logInfoMessage "${commitId} LTTR in seconds is  ${commitLTTRInSec}"
 }
 
 setConstants
