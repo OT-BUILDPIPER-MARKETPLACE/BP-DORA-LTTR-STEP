@@ -49,5 +49,5 @@ function createDeploymentTag() {
     fi
 }
 
-#createReleaseTag "createReleaseTagTask"
-createDeploymentTag "design"
+#createReleaseTag "createReleaseTag"
+createDeploymentTag "createReleaseTag"
