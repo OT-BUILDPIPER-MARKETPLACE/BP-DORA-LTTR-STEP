@@ -49,5 +49,13 @@ function createDeploymentTag() {
     fi
 }
 
+function getReleaseCommits() {
+    releaseName=$1
+    previousReleaseName=$2
+    logInfoMessage "Listing out commits done between ${previousReleaseName} and ${releaseName} release"
+    logInfoMessage "Or you can say commits of ${releaseName}"
+
+}
 #createReleaseTag "createDeploymentTag"
-createDeploymentTag "createDeploymentTag"
+#createDeploymentTag "createDeploymentTag"
+getReleaseCommits createDeploymentTag createReleaseTag
