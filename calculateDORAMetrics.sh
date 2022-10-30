@@ -3,6 +3,15 @@ function setConstants() {
     export UNIX_TIMESTAMP="%ct"
 }
 
+#For now just converting seconds to minutes
+function convertUnit() {
+    value=$1
+    sourceUnit=$2
+    targetUnit=$3
+    convertedValue=`expr $1 / 60`
+    echo ${convertedValue}
+}
+
 function logInfoMessage() {
     MESSAGE="$1"
     CURRENT_DATE=`date "+%D: %T"`
@@ -87,6 +96,8 @@ function getCommitLTTR() {
     logInfoMessage "${releaseName} deployment timestamp is ${commitCreationTime}"
     commitLTTRInSec=`expr ${releaseDeploymentTime} - ${commitCreationTime}`
     logInfoMessage "${commitId} LTTR in seconds is  ${commitLTTRInSec}"
+    commitLTTRInMin=`convertUnit ${commitLTTRInSec} sec min`
+    logInfoMessage "${commitId} LTTR in minutes is  ${commitLTTRInMin}"
 }
 
 setConstants
