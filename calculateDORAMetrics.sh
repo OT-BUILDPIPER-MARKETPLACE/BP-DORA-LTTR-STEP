@@ -108,8 +108,15 @@ function getCommitLTTR() {
     logInfoMessage "${commitId} LTTR in minutes is  ${commitLTTRInMin}"
 }
 
+function getReleaseCommitsLTTR() {
+    releaseName=$1
+    previousReleaseName=$2
+    logInfoMessage "Listing out LTTR of all the commits of release  ${releaseName}"
+}
+
 setConstants
 #createReleaseTag "getCommitLTTR"
-createDeploymentTag "getCommitLTTR"
+#createDeploymentTag "getCommitLTTR"
 #getReleaseCommits createDeploymentTag createReleaseTag
 #getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
+getReleaseCommitsLTTR createDeploymentTag createReleaseTag
