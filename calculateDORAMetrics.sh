@@ -1,4 +1,7 @@
 #!/bin/bash
+function setConstants() {
+    export UNIX_TIMESTAMP="%ct"
+}
 
 function logInfoMessage() {
     MESSAGE="$1"
@@ -8,7 +11,7 @@ function logInfoMessage() {
 
 function getCommitTime() {
     commitId=$1
-    git log ${commitId} -n 1 --pretty=%ct
+    git log ${commitId} -n 1 --pretty=${UNIX_TIMESTAMP}
 }
 
 function logErrorMessage() {
@@ -78,8 +81,11 @@ function getCommitLTTR() {
     logInfoMessage "I'll get the LTTR for provided commit id ${commitId} in release ${releaseName}"
     releaseDeploymentTag=`getReleaseDeploymentTagName ${releaseName}`
     logInfoMessage "Deployment tag of release is ${releaseDeploymentTag}"
+    commitCreationTime=`getCommitTime ${commitId}`
+    logInfoMessage "$commitId creation timestamp is ${commitCreationTime}"
 }
 
+setConstants
 #createReleaseTag "getReleaseCommits"
 #createDeploymentTag "getReleaseCommits"
 #getReleaseCommits createDeploymentTag createReleaseTag
