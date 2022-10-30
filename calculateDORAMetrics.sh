@@ -50,4 +50,4 @@ function createDeploymentTag() {
 }
 
 #createReleaseTag "createDeploymentTag"
-#createDeploymentTag "createReleaseTag"
+createDeploymentTag "createDeploymentTag"
