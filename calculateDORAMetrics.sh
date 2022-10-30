@@ -36,4 +36,18 @@ function createReleaseTag() {
     fi
 }
 
-createReleaseTag "createReleaseTag"
+function createDeploymentTag() {
+    releaseName=$1
+    deploymentTag="$releaseName#deployed"
+    tagExists=`tagExists ${deploymentTag}`
+    if [ $tagExists -eq 1 ]; then
+        logInfoMessage "Creating deployment tag ${deploymentTag} for ${releaseName} release"
+        git tag ${deploymentTag}
+    else
+        logErrorMessage "Deployment tag ${deploymentTag} alread exists for ${releaseName} release, please delete the tag first"
+
+    fi
+}
+
+#createReleaseTag "createReleaseTagTask"
+createDeploymentTag "design"
