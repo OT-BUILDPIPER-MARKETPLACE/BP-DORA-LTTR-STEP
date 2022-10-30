@@ -112,6 +112,7 @@ function getReleaseCommitsLTTR() {
     releaseName=$1
     previousReleaseName=$2
     logInfoMessage "Listing out LTTR of all the commits of release  ${releaseName}"
+    getReleaseCommits $releaseName $previousReleaseName
 }
 
 setConstants
