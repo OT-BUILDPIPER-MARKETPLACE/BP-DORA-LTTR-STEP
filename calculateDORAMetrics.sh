@@ -35,6 +35,12 @@ function getReleaseDeploymentTagName() {
     echo ${deploymentTag}
 }
 
+function getReleaseReleaseTagName() {
+    releaseName=$1
+    releaseTag="$releaseName#release"
+    echo ${releaseTag}
+}
+
 function tagExists() {
     tagName=$1
     tagListName=`git tag -l $tagName`
@@ -48,7 +54,7 @@ function tagExists() {
 
 function createReleaseTag() {
     releaseName=$1
-    releaseTag="$releaseName#release"
+    releaseTag=`getReleaseReleaseTagName ${releaseName}`
     tagExists=`tagExists ${releaseTag}`
     if [ $tagExists -eq 1 ]; then
         logInfoMessage "Creating release tag ${releaseTag} for ${releaseName}"
@@ -101,7 +107,7 @@ function getCommitLTTR() {
 }
 
 setConstants
-#createReleaseTag "getReleaseCommits"
+createReleaseTag "getCommitLTTR"
 #createDeploymentTag "getReleaseCommits"
 #getReleaseCommits createDeploymentTag createReleaseTag
-getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
+#getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
