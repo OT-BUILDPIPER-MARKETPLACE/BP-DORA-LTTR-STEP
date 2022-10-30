@@ -12,6 +12,12 @@ function logErrorMessage() {
     echo -e "[$CURRENT_DATE] "$COLOR_START$RED[ERROR]$COLOR_END" $MESSAGE"
 }
 
+function getReleaseDeploymentTagName() {
+    releaseName=$1
+    deploymentTag="$releaseName#deployed"
+    echo ${deploymentTag}
+}
+
 function tagExists() {
     tagName=$1
     tagListName=`git tag -l $tagName`
@@ -65,10 +71,11 @@ function getCommitLTTR() {
     commitId=$1
     releaseName=$2
     logInfoMessage "I'll get the LTTR for provided commit id ${commitId} in release ${releaseName}"
+    releaseDeploymentTag=`getReleaseDeploymentTagName ${releaseName}`
+    logInfoMessage "Deployment tag of release is ${releaseDeploymentTag}"
 }
 
 #createReleaseTag "getReleaseCommits"
 #createDeploymentTag "createDeploymentTag"
 #getReleaseCommits createDeploymentTag createReleaseTag
-
 getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
