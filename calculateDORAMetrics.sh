@@ -76,6 +76,6 @@ function getCommitLTTR() {
 }
 
 #createReleaseTag "getReleaseCommits"
-createDeploymentTag "getReleaseCommits"
+#createDeploymentTag "getReleaseCommits"
 #getReleaseCommits createDeploymentTag createReleaseTag
-#getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
+getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
