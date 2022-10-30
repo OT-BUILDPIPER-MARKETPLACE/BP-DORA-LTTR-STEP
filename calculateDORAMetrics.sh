@@ -1,6 +1,7 @@
 #!/bin/bash
 function setConstants() {
     export UNIX_TIMESTAMP="%ct"
+    RELEASE_SUFFIX="#release"
 }
 
 #For now just converting seconds to minutes
@@ -37,7 +38,7 @@ function getReleaseDeploymentTagName() {
 
 function getReleaseReleaseTagName() {
     releaseName=$1
-    releaseTag="$releaseName#release"
+    releaseTag="${releaseName}${RELEASE_SUFFIX}"
     echo ${releaseTag}
 }
 
