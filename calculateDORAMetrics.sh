@@ -2,6 +2,7 @@
 function setConstants() {
     export UNIX_TIMESTAMP="%ct"
     RELEASE_SUFFIX="#release"
+    DEPLOYMENT_TAG_SUFFIX="#deployed"
 }
 
 #For now just converting seconds to minutes
@@ -32,7 +33,7 @@ function logErrorMessage() {
 
 function getReleaseDeploymentTagName() {
     releaseName=$1
-    deploymentTag="$releaseName#deployed"
+    deploymentTag="${releaseName}${DEPLOYMENT_TAG_SUFFIX}"
     echo ${deploymentTag}
 }
 
@@ -109,6 +110,6 @@ function getCommitLTTR() {
 
 setConstants
 #createReleaseTag "getCommitLTTR"
-#createDeploymentTag "getReleaseCommits"
-getReleaseCommits createDeploymentTag createReleaseTag
+createDeploymentTag "getCommitLTTR"
+#getReleaseCommits createDeploymentTag createReleaseTag
 #getCommitLTTR 79f32cac049cd2579aab555007aa82ba179b915a createDeploymentTag
