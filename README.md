@@ -2,7 +2,8 @@
 BP Step to calculater Lead Time to Release for commits
 
 ## Design
-![Below is rough reference diagram on how to calculate LTTR](images/RoughReference.png)
+Below is rough reference diagram on how to calculate LTTR
+![LTTR calculation rough design](images/RoughReference.png)
 
 ## Tasks
 * Create Release Tag | A tag will be created in git for a release whenever it is marked as completed.
